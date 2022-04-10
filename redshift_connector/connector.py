@@ -2,7 +2,7 @@ import os
 import psycopg2
 
 import logging.config
-from logging_conf import LOGGING_CONFIG
+from redshift_connector.logging_conf import LOGGING_CONFIG
 
 logging.config.dictConfig(LOGGING_CONFIG)
 _logger = logging.getLogger('__name__')
