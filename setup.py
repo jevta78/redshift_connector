@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='redshift_connector',
-    packages=find_packages(exclude=['connector']),
+    packages=find_packages(),
     version='0.1.0',
     description='Connector to redshift db',
     author='Nikola Jevtic',
