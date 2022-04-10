@@ -4,6 +4,7 @@ import psycopg2
 def connect():
     try:
         print(os.environ.get("ARG_REDSHIFT_SERVER"))
+        print(os.environ.get("ARG_REDSHIFT_USERNAME"))
         conn = psycopg2.connect(
             host=os.environ.get("ARG_REDSHIFT_SERVER"),
             port=5439,
