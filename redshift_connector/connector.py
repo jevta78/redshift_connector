@@ -1,13 +1,12 @@
 import os
 import psycopg2
-import logging
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-c_format = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(c_format)
-logger.addHandler(handler)
+import logging.config
+from logging_conf import LOGGING_CONFIG
+
+logging.config.dictConfig(LOGGING_CONFIG)
+_logger = logging.getLogger('__name__')
+
 
 def connect(query):
     try:
@@ -18,7 +17,7 @@ def connect(query):
             password=os.environ.get("ARG_REDSHIFT_PASSWORD"),
             dbname=os.environ.get("ARG_REDSHIFT_DATABASE"),
         )
-        logger.info(
+        _logger.info(
             "Connection established")
 
 
@@ -33,5 +32,5 @@ def connect(query):
     finally:
         conn.close()
         cursor.close()
-        logger.info(
+        _logger.info(
             "Connection closed and cursor closed")
