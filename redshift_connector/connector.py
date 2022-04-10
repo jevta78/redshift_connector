@@ -21,8 +21,10 @@ def connect(query):
         logger.info(
             "Connection established")
 
+
         cursor=conn.cursor()
-        rows = cursor.fetchall(query)
+        cursor.execute(query)
+        rows = cursor.fetchall()
         return cursor, rows
 
     except Exception as err:
